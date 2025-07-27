@@ -4,8 +4,7 @@ import java.util.Arrays;
 
 public class CountSubarraysMaxElementK {
     /*
-    Turtlec8r@@@
-
+    https://leetcode.com/problems/count-subarrays-where-max-element-appears-at-least-k-times/description/
      */
 
     //Revise this.
