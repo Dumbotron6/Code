@@ -12,9 +12,10 @@ public class FindEvenNumbers {
         ArrayList<Integer> result = new ArrayList<Integer>();
 
         for(int d : digits) {
-            digCount[d]++;
+            digCount[d]++; //Frequency of each digit.
         }
 
+        //Since we need to find 3 digit numbers, check if everything between 100 and 1000 can be found.
         for(int i = 100; i < 1000; i+=2) {
             if(checkDigit(digCount, i)) {
                 result.add(i);
@@ -31,12 +32,12 @@ public class FindEvenNumbers {
     }
 
     public boolean checkDigit(int[] digCount, int digit) {
-        int[] count = new int[]{-1,-1,-1};
+        int[] count = new int[]{-1,-1,-1}; //Store each of the 3 digits we check here.
         int i = 2;
         while(digit > 0) {
             int rem = digit%10;
             digit /= 10;
-            if(digCount[rem] > 0) {
+            if(digCount[rem] > 0) { //If digit exists in the freq array.
                 count[i--] = rem;
                 digCount[rem]--;
             }else {
@@ -45,7 +46,7 @@ public class FindEvenNumbers {
         }
         boolean present = (i == -1) ? true : false;
 
-        while(i < 2) {
+        while(i < 2) { //Restore the digits we used up while checking.
             digCount[count[++i]]++;
         }
 

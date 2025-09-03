@@ -33,7 +33,7 @@ public class CutGridIntoSections {
         Arrays.sort(xPoints, (a,b) -> a[0]-b[0]);
         Arrays.sort(yPoints, (a, b) -> a[0]-b[0]);
 
-        //Either the x or y coordinates should have non overlap.
+        //Either the x or y coordinates should have 3 non overlaps.
         return checkNonOverlap(xPoints) || checkNonOverlap(yPoints);
     }
 
@@ -41,6 +41,7 @@ public class CutGridIntoSections {
     Store the max of all end points. If the start we encounter is <= old end,
         that means we have a non-overlapping section.
     Storing the max of end points lets us not having to sort by start and then end to identify overlaps.
+    count stores the number of non overlaps. They should be at least 3.
     */
     public boolean checkNonOverlap(int[][] arr) {
         int count = 0;

@@ -17,7 +17,7 @@ public class FirstMissingPositive {
 
         /*
         We know all positives should be between 1 and len ideally.
-        So we can nums itself instead of a hashset to mark whether a positive has been encountered or not.
+        So we can use nums itself instead of a hashset to mark whether a positive has been encountered or not.
         If val is 3, we mark nums[3-1].
         */
         for(int i = 0; i < len; i++) {
