@@ -25,7 +25,7 @@ public class CanPlaceFlowers {
                 flowerbed[i] = 1;
             }
         }
-        if(flowerbed[len] == 0 && len > 0 &&flowerbed[len-1] == 0) {
+        if(flowerbed[len] == 0 && len > 0 && flowerbed[len-1] == 0) {
             placed++;
         }
 
