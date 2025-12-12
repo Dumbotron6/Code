@@ -9,6 +9,7 @@ public class HandOfStraights {
     https://leetcode.com/problems/hand-of-straights/
      */
 
+    //Same as DivideArrayKSets but that is better as we don't have to use heap which increases time complexity.
     public boolean isNStraightHand(int[] hand, int groupSize) {
         Map<Integer, Integer> numCount = new HashMap<Integer, Integer>();
         /*
