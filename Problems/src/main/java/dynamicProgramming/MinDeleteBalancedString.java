@@ -33,4 +33,26 @@ public class MinDeleteBalancedString {
 
         return minDel;
     }
+
+    //Revist his approach.
+    public int minimumDeletionsOptimal(String s) {
+        int bCount = 0;
+        int deletes = 0;
+
+        for(char c : s.toCharArray()) {
+            if(c == 'b') {
+                bCount++;
+            }else {
+                //At 'a', check what would be minimum, deleting all b encountered so far, or keep all deletetions, and delete this a.
+                deletes = Math.min(deletes+1, bCount);
+            }
+            /*
+            What this would lead to is, deleteing all b on the left, or deleting a combination of a and b(deletes), and add this a to the deletion.
+            'aababbab' at index 6, bCount is 3, but deletes+1 would be 2, so that is taken.
+            deletes would be 1(from deleting the previous single b during index 3) plus this current a.
+            */
+        }
+
+        return deletes;
+    }
 }

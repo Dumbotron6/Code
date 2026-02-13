@@ -30,12 +30,12 @@ public class ZeroArrayTransformation2 {
         */
         for(int[] query : queries) {
             if(query[1] >= i) {
-                sweepTrack[query[0]] += query[2];
+                sweepTrack[query[0]] += query[2]; //If query[0] is less than i, it doesn't matter as we won't use it. That is what the below if is for.
                 sweepTrack[query[1]+1] -= query[2];
             }
-            if(query[0] < i && query[1] >= i) {
+            if(query[0] < i && query[1] >= i) { //If i is 2 and query[0] is 0, we need to add query[2] to i. That's what this is for.
                 sum += query[2];
-            }
+            } //Only add if i falls within range, since we can't add something that won't cover i.
             while(i < len && sum + sweepTrack[i] >= nums[i]) {
                 sum+=sweepTrack[i];
                 i++;

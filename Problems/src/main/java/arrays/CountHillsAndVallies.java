@@ -13,7 +13,7 @@ public class CountHillsAndVallies {
 
         /*
         Move left only when peak or valley found. If it keeps rising or dipping or remains equal, don't move left.
-        Why do this? Try exampls [3,2,1] or [1,2,3] or [1,2,2,1].
+        Why do this? Try example [3,2,1] or [1,2,3] or [1,2,2,1].
         */
         while(right < nums.length) {
             if(nums[pos] < nums[left] && nums[pos] < nums[right]) {//Valley.

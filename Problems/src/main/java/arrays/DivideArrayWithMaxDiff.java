@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class DivineArrayWithMaxDiff {
+public class DivideArrayWithMaxDiff {
     /*
     https://leetcode.com/problems/divide-array-into-arrays-with-max-difference/
      */
