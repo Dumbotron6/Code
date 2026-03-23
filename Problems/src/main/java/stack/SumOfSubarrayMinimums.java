@@ -4,7 +4,7 @@ import java.util.LinkedList;
 
 public class SumOfSubarrayMinimums {
     /*
-    https://leetcode.com/problems/next-greater-element-ii/description/
+    https://leetcode.com/problems/sum-of-subarray-minimums/description/
      */
 
     /*

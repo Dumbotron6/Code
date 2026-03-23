@@ -47,4 +47,6 @@ public class BinarySubarraysWithSum {
 
         return totalGoals;
     }
+
+    //NOTE: We can also use prefixSums and then at each index, check for currSum-goal.
 }

@@ -12,7 +12,7 @@ public class SplitArrayLargestSum {
         student can hold is 6. Now we have a range. 6-17.
     If we keep allocating books to a student till the max pages(6) are reached, we'd end up with [6,6,5] which is 3 students.
     This is less than k. We can also end up with students > k (Ex. [6,6,6,6,6] and k = 4). So we adjust the mid(essentially max pages).
-    For students > k, we increase mid, and for students <= we decrease mid.
+    For students >= k, we increase mid, and for students < k, we decrease mid.
     Finally, whatever we end up with will have students == k.
      */
     public int splitArray(int[] nums, int k) {
@@ -51,6 +51,6 @@ public class SplitArrayLargestSum {
             }
             assigned++;
         }
-        return arraySize <= k-1;
+        return arraySize < k;
     }
 }

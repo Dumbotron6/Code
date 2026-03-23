@@ -12,6 +12,9 @@ public class LongestRepeatCharacterReplace {
     The reason we don't change max inside the inner loop is because, until that point, we encounter same chars in a
         substring > max, there is no point in checking anything less than max. So we change max only when we get
         something greater.
+    NOTE: Since max is 3, if index is at 4, end-begin+1 would be 5. If k is 1, 5-3 > 1.
+    Understand that max is the character that we keep the same. We change all else. So that changing count(end-begin+1)
+        should not be > k.
      */
     public int characterReplacement(String s, int k) {
         int begin = 0;

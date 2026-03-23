@@ -3,6 +3,10 @@ package stack;
 import java.util.LinkedList;
 
 public class CountCollisions {
+    /*
+    https://leetcode.com/problems/count-collisions-on-a-road/description/
+     */
+
     public int countCollisions(String directions) {
         LinkedList<Character> cars = new LinkedList<Character>();
         int collisions = 0;

@@ -49,4 +49,5 @@ public class WordBreak {
         memo[start] = iteratedButFound;
         return memo[start];
     }
+    //NOTE: What we mark is, from any index start, can the end be reached or not.
 }

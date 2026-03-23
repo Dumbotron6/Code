@@ -2,7 +2,7 @@ package greedy;
 
 public class MinIncrementsToTarget {
     /*
-    https://leetcode.com/problems/minimum-number-of-increments-on-subarrays-to-form-a-target-array/
+     https://leetcode.com/problems/minimum-number-of-increments-on-subarrays-to-form-a-target-array/description/
      */
 
     /*

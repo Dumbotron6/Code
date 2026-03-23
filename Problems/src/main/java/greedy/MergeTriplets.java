@@ -59,4 +59,23 @@ public class MergeTriplets {
 
         return found[0] && found[1] && found[2];
     }
+
+    public boolean mergeTripletsAlt2(int[][] triplets, int[] target) {
+
+        boolean[] found = new boolean[3];
+
+        for(int[] a : triplets){
+
+            if(a[0] > target[0] || a[1] > target[1] || a[2] > target[2]) continue;
+
+            if(a[0] == target[0]) found[0] = true;
+            if(a[1] == target[1]) found[1] = true;
+            if(a[2] == target[2]) found[2] = true;
+
+            if (found[0] && found[1] && found[2]) return true;
+        }
+
+        return found[0] && found[1] && found[2];
+
+    }
 }

@@ -32,6 +32,28 @@ public class GasStation {
         return begin < len ? begin : -1;
     }
 
+    public int canCompleteCircuitOptimal(int[] gas, int[] cost) {
+
+        int total = 0;
+        int res = 0;
+        for (int i = 0; i < gas.length; i++) {
+            total += (gas[i] - cost[i]);
+
+            if (total < 0) {
+                total = 0;
+                res = i + 1;
+            }
+        }
+
+        return res;
+    }
+
+    /*
+    If at some index the tank becomes negative, it means we cannot start from any station between the previous start and this index,
+        because they would all run out of gas at the same point.
+    So we reset the tank and try the next station as a new starting point.
+     */
+
     /*
     Alternatively, we can calculate the total gas and cost beforehand. This will let us eliminate actPtr and
         (ptr-begin) < len check altogether.  We can only query till len and not go circular.

@@ -53,4 +53,27 @@ public class FillBookcase {
 
         return minHeight[ptr];
     }
+
+    //This is greedy but won't work. Take example [[1, 3], [2, 4], [3, 2]]. This will give 7 but answer is 6.
+    public int minHeightShelvesWrong(int[][] books, int shelfWidth) {
+        int len = books.length;
+        int width = 0;
+        int totalHeight = 0;
+        int currHeight = 0;
+
+        for(int i = len-1; i >= 0; i--) {
+            if(width+books[i][0] <= shelfWidth) {
+                width += books[i][0];
+                currHeight = Math.max(currHeight, books[i][1]);
+            }else {
+                totalHeight += currHeight;
+                width = books[i][0];
+                currHeight = books[i][1];
+            }
+        }
+
+        totalHeight += currHeight;
+
+        return totalHeight;
+    }
 }

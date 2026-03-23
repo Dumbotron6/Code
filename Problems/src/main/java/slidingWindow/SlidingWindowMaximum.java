@@ -29,4 +29,28 @@ public class SlidingWindowMaximum {
         }
         return result;
     }
+
+    //This is the same as above, better explanation.
+    public int[] maxSlidingWindowAlt(int[] nums, int k) {
+        LinkedList<Integer> maxList = new LinkedList<Integer>(); //Stores max at tail, latest index at head.
+        int[] maxVals = new int[nums.length-k+1];
+
+        for(int i = 0; i < nums.length; i++) {
+            if(!maxList.isEmpty() && i-k+1 > maxList.peekLast()) { //Remove once window crosses tail.
+                maxList.removeLast();
+            }
+
+            //Remove everything < current from head as this will be max for any window this index is a part of, so lesser elements can be discarded.
+            while(!maxList.isEmpty() && nums[maxList.peek()] <= nums[i]) {
+                maxList.pop();
+            }
+
+            maxList.push(i); //Add latest to head.
+            if(i >= k-1) {
+                maxVals[i-k+1] = nums[maxList.peekLast()]; //Get max from tail.
+            }
+        }
+
+        return maxVals;
+    }
 }

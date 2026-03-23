@@ -15,12 +15,11 @@ public class MaximalSquare {
     public int maximalSquare(char[][] matrix) {
         row = matrix.length-1;
         col = matrix[0].length-1;
-        int m = row, n = col;
-        Integer[][] cache = new Integer[m+1][n+1];
+        Integer[][] cache = new Integer[row+1][col+1];
 
         int maxSq = 0;
 
-        for(int i = m; i >= 0; i--) {
+        for(int i = row; i >= 0; i--) {
             for(int j = col; j >= 0; j--) {
                 if(matrix[i][j] == '1') {
                     int right = checkCache(cache, i, j+1);
@@ -32,20 +31,6 @@ public class MaximalSquare {
                 }
                 maxSq = Math.max(maxSq, cache[i][j]);
             }
-            m--;
-        }
-
-        for(int i = m; i >= 0; i--) {
-            int j = 0;
-            if(matrix[i][j] == '1') {
-                int right = checkCache(cache, i, j+1);
-                int down = checkCache(cache, i+1, j);
-                int diag = checkCache(cache, i+1, j+1);
-                cache[i][j] = 1+Math.min(Math.min(right, down), diag);
-            }else {
-                cache[i][j] = 0;
-            }
-            maxSq = Math.max(maxSq, cache[i][j]);
         }
 
         return maxSq*maxSq;

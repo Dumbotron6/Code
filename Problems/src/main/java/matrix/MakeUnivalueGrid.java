@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class MakeUnivalueGrid {
     /*
-
+    https://leetcode.com/problems/minimum-operations-to-make-a-uni-value-grid/
      */
 
     public int minOperations(int[][] grid, int x) {

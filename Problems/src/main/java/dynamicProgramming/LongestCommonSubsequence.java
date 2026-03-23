@@ -70,4 +70,35 @@ public class LongestCommonSubsequence {
       That's what we do in the above code. We do both and pick the max value among them.
       Why add 1? Because of the characters match, then we found a common char, so we increase count.
     */
+
+    /*
+    This won't work. Take "abcba" and "bcaba" and test. This gives 3 while the actual answer is 4.
+    The reason is simple. We try to match every character of one string to subsequence of another. That is not what
+        we want. We want subsequence of one two match subsequence of another. Meaning both can have skip characters.
+     */
+    public int longestCommonSubsequenceGreedy(String text1, String text2) {
+        int max1 = 0, max2 = 0;
+
+        int i = 0, j = 0;
+
+        while(i < text1.length() && j < text2.length()) {
+            if(text1.charAt(i) == text2.charAt(j)) {
+                i++;
+                max1++;
+            }
+            j++;
+        }
+
+        i = 0; j = 0;
+        while(i < text1.length() && j < text2.length()) {
+            if(text1.charAt(i) == text2.charAt(j)) {
+                j++;
+                max2++;
+            }
+            i++;
+        }
+
+        return Math.max(max1, max2);
+    }
+
 }

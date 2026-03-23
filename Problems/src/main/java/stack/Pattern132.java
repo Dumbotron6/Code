@@ -4,6 +4,10 @@ import java.util.LinkedList;
 
 public class Pattern132 {
     /*
+    https://leetcode.com/problems/132-pattern/description/
+     */
+
+    /*
     The condition is, i < j > k. So till we find a j, keep adding to stack.
     When we do find j, keep popping till we find maximum k.
     ie, whenever we find a j > k, the top of the stack will have the max element and kEle will have the second max element.

@@ -49,11 +49,14 @@ public class RobotLexiString {
             4. Stack -"zzd", counter[c] == 1, so current remains c.
             */
 
-            /*So basically, if a higher priority character exists, that will be inserted.
+            /*
+            So basically, if a higher priority character exists, that will be inserted.
                 If not, the remaining values in the stack will be inserted in the string.
             */
         }
 
         return paperString.toString();
     }
+
+    //NOTE: To better understand, take "zzabcdca" and simulate. Will understand why stacks like this are necessary.
 }

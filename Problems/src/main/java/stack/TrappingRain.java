@@ -18,6 +18,8 @@ public class TrappingRain {
         kick in and start filling from the right.
     Why leftpeak-height[left] or rightpeak-height[right]? Because left or right peak is the max amount of water that can
         be filled.
+    Note that when left < right, left will be < rightPeak, meaning, leftPeak < rightPeak.
+    Vice versa when right < left. That's why we check if(height[left] <= height[right]) and can safely do leftPeak-height[left].
      */
     public int trap(int[] height) {
 

@@ -6,6 +6,10 @@ import java.util.Map;
 
 public class CoinChange {
     /*
+    https://leetcode.com/problems/coin-change/description/
+     */
+
+    /*
    The understanding is, there are various ways to reach amount.
    Similarly, there are various ways to reach amount-k.
    For example, in [1,2,5] and 11, from 0, we can add 5,5,1 to reach 11 which is one way.
