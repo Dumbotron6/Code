@@ -17,7 +17,7 @@ public class SmallestStringNumericValue {
             if(k <= 25) { //Why 25? 26 would be z which is covered below.
                 strArray[i] = (char)('a'+k-1);
                 break;
-            }else {
+            }else { //Will leave k with 1, going into next iteration in the loop.
                 strArray[i] = 'z';
             }
             k -= 25; //Wht 25? We already filled with 'a' so can't do -26.

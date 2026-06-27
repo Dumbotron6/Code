@@ -1,6 +1,7 @@
 package tree;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class MaximumWidthOfTree {
@@ -8,7 +9,50 @@ public class MaximumWidthOfTree {
     https://leetcode.com/problems/maximum-width-of-binary-tree/
      */
 
+    /*
+    We use BFS.
+    The positions for left and right being 2*pos and 2*pos+1 is purely math.
+    Draw the diagram and note down the positions for clarity.
+    The indexes would go like this [0],[0,1],[0,1,2,3],[0,1,2,3,4,5,6,7].
+     */
     public int widthOfBinaryTree(TreeNode root) {
+        class Pair {
+            TreeNode node;
+            int index;
+
+            public Pair(TreeNode node, int index) {
+                this.node = node;
+                this.index = index;
+            }
+        }
+
+        LinkedList<Pair> queue = new LinkedList<Pair>();
+        queue.add(new Pair(root, 0));
+        int maxDiff = 0;
+
+        while(!queue.isEmpty()) {
+            int size = queue.size();
+            int left = queue.peek().index; //Index if left most element in this depth.
+
+            for(int i = 0; i < size; i++) {
+                TreeNode curr = queue.peek().node;
+                int idx = queue.pop().index;
+                if(curr.left != null) {
+                    queue.add(new Pair(curr.left, 2*idx));
+                }
+                if(curr.right != null) {
+                    queue.add(new Pair(curr.right, 2*idx+1));
+                }
+                if(i == size-1) { //Index of last element in this depth.
+                    maxDiff = Math.max(maxDiff, idx-left+1);
+                }
+            }
+        }
+
+        return maxDiff;
+    }
+
+    public int widthOfBinaryTreeAlt(TreeNode root) {
         List<long[]> depthLen = new ArrayList<long[]>();
         int pos = 0;
         bfs(root, depthLen, 1, 0);

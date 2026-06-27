@@ -5,8 +5,8 @@ import java.util.*;
 public class CourseSchedule {
     /*
     https://leetcode.com/problems/course-schedule/
-    Can be done using toplogical sort also to check for cycle.
-    The first solution uses regular DFS. The second uses topoloical sort.
+    Can be done using topological sort also to check for cycle.
+    The first solution uses regular DFS. The second uses topological sort.
      */
 
     Set<Integer> visited;
@@ -78,23 +78,61 @@ public class CourseSchedule {
                 courses.put(course[0], new ArrayList<Integer>());
             }
             courses.get(course[0]).add(course[1]); //Track all prerequisite that course[0] has.
-            inDegree[course[1]]++; //Count the prerequisites for the target course.
+            inDegree[course[1]]++; //Count the number of courses that depend on course[1].
         }
 
         for(int i = 0; i < numCourses; i++) {
-            if(inDegree[i] == 0) { //Add all courses without prerequisites to queue.
+            if(inDegree[i] == 0) { //Add all courses that are not being depended upon by any other courses.
                 sortQueue.add(i);
             }
         }
 
         while(!sortQueue.isEmpty()) {
             int curr = sortQueue.pop();
-            takenCourses++; //If it's in queue, then it means the course's prerequisites were taken. So we can increment the popped course.
+            takenCourses++; //If it's in queue, then it means the all courses that depend on this were taken. So we can increment the popped course.
 
-            for(int nei : courses.getOrDefault(curr, new ArrayList<Integer>())) {
-                inDegree[nei]--; //We decrement for each prerequisites course taken by 'nei' course.
-                if(inDegree[nei] == 0) { //Only add if all prerequisites were covered and there are no more prerequisites.
-                    sortQueue.add(nei);
+            for(int parent : courses.getOrDefault(curr, new ArrayList<Integer>())) {
+                inDegree[parent]--; //We decrement for each course that have dependency on 'nei' filled.
+                if(inDegree[parent] == 0) { //Only add if there are no more courses that depend on this course.
+                    sortQueue.add(parent);
+                }
+            }
+        }
+
+        //If there was no cycle detected, then every course would've been added to and popped from the queue.
+        return takenCourses == numCourses;
+    }
+
+    //Same as above, difference is we track target course instead of parent course in inDegree. Easier to understand.
+    public boolean canFinishTopoSort2(int numCourses, int[][] prerequisites) {
+        Map<Integer, List<Integer>> courses = new HashMap<Integer, List<Integer>>();
+        int[] inDegree = new int[numCourses];
+        LinkedList<Integer> sortQueue = new LinkedList<Integer>();
+
+        int takenCourses = 0;
+
+        for(int[] course : prerequisites) { //Since there are multiple connections, form a graph.
+            if(!courses.containsKey(course[1])) {
+                courses.put(course[1], new ArrayList<Integer>());
+            }
+            courses.get(course[1]).add(course[0]); //Add all courses where course[1] is parent.
+            inDegree[course[0]]++; //Count the parents for the target course.
+        }
+
+        for(int i = 0; i < numCourses; i++) {
+            if(inDegree[i] == 0) { //Add all courses without parents to queue.
+                sortQueue.add(i);
+            }
+        }
+
+        while(!sortQueue.isEmpty()) {
+            int curr = sortQueue.pop();
+            takenCourses++; //If it's in queue, then it means the course's parents were taken. So we can increment the popped course.
+
+            for(int target : courses.getOrDefault(curr, new ArrayList<Integer>())) {
+                inDegree[target]--; //We decrement for each parent course pointing to 'target' course.
+                if(inDegree[target] == 0) { //Only add if all parents were covered and there are no more parents.
+                    sortQueue.add(target);
                 }
             }
         }

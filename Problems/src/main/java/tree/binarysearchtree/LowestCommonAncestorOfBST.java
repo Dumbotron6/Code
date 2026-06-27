@@ -3,6 +3,9 @@ package tree.binarysearchtree;
 import tree.TreeNode;
 
 public class LowestCommonAncestorOfBST {
+    /*
+    https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/description/
+     */
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         TreeNode smaller;
         TreeNode greater;

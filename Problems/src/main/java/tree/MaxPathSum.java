@@ -28,8 +28,8 @@ public class MaxPathSum {
            -2
            /
           1
-         The sum for 1 would be 1, -1 would be -1, and 2 would be 0 which is lower than the node's value 2.
-         If instead of 2,-1,1 we had 3.-1,4 then it's fine as the sum at any point wouldn't be -ve.
+         The sum for 1 would be 1, -2 would be -1, and 2 would be 1 which is lower than the node's value 2.
+         If instead of 2,-1,1 we had 3,-1,4 then it's fine as the sum at any point wouldn't be -ve.
          */
         int left = Math.max(0, findMax(root.left));
         int right = Math.max(0, findMax(root.right));
